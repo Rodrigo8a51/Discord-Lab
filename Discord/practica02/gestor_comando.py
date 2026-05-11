@@ -31,7 +31,10 @@ def analizar_comando(entrada_usuario):
                 "2. '!validar <nombre>' - Revisa si un nombre de variable es correcto\n"
                 "3. '!hora' - Muestra la hora del sistema\n"
             )
-
+        else:
+            return f" El comando '{comando}' no existe. Usa '!ayuda'."
+        
+    return " Recuerda usar el prefijo '!' para darme órdenes, o pregunta algo directamente."
 
 def buscar_en_diccionario(termino):
         if not termino:
@@ -61,4 +64,11 @@ def validar_variable(nombre):
 
 if __name__ == "__main__":
     print("---Agente de Logica: Fase de Comandos---")
-    
+    print("Prueba comandos como: !validar 123hola o !definir lista\n")
+ 
+    while True:
+        user_input = input("Alumno >> ")
+        if user_input.lower() in ["salir", "exit"]: break
+ 
+        respuesta = analizar_comando(user_input)
+        print(f"Bot >> {respuesta}\n")
