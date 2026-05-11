@@ -12,3 +12,52 @@ def agregar_tarea(lista_tareas, descripcion):
     nueva_tarea = f"{descripcion} - {fecha}"
     lista_tareas.append(nueva_tarea)
     return f"Tarea '{descripcion}' agregada con exito."
+
+def listar_tareas(lista_tareas):
+    """
+    Formatea la lista de tareas para su visualizacion
+    """
+    if not lista_tareas:
+        return "No hay tareas"
+    
+    resultado = "Listado de tareas:\n"
+
+    for i, tarea in enumerate(lista_tareas, start=1):
+        resultado += f"{i}. {tarea}\n"
+    return resultado
+
+def eliminar_tarea(lista_tareas, indice):
+    """
+    Eliminar una tarea por su numero de indice
+    """
+    if not indice.isdigit():
+        return "ERROR. El indice debe ser un numero."
+    
+    indice = int(indice) - 1
+    
+    if 0 <= indice < len(lista_tareas):
+        tarea_eliminada = lista_tareas.pop(indice)
+    else:
+        return "ERROR. No existe la tarea"
+    return f"Tarea eliminada: '{tarea_eliminada}'"
+
+def main():
+    tareas = []
+    prefijo = "!"
+    print("Bienvenido al gestor de tareas")
+    activo = True
+    while activo:
+        entrada = input(">>>").strip()
+        
+        if not entrada.startswith(prefijo):
+            print("ERROR. Comando no reconocido")
+            continue
+        
+        #Procesamiento de la entrada
+        cuerpo = entrada[len(prefijo):].split(maxsplit=1)
+        comando = cuerpo[0].lower()
+        argumento = cuerpo[1] if len(cuerpo) > 1 else ""
+
+        if comando == "add":
+            resultado = agregar_tarea(tareas, argumento)
+            print(resultado)
