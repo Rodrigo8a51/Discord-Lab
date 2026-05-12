@@ -58,6 +58,22 @@ def main():
         comando = cuerpo[0].lower()
         argumento = cuerpo[1] if len(cuerpo) > 1 else ""
 
-        if comando == "add":
-            resultado = agregar_tarea(tareas, argumento)
-            print(resultado)
+        if comando == "exit":
+            print("Saliendo del gestor...")
+            activa = False
+        elif comando == "add":
+            print(agregar_tarea(tareas, argumento))
+            
+        elif comando == "list":
+            print(listar_tareas(tareas))
+            
+        elif comando == "del":
+            print(eliminar_tarea(tareas, argumento))
+            
+        else:
+            print(f" Error: Comando '!{comando}' no reconocido.")
+        
+        print("-" * 20)
+
+if __name__ == "__main__":
+    main()
