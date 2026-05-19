@@ -39,7 +39,6 @@ def main(entrada):
             print(mostrar_bienvenida())
             return mostrar_bienvenida()
         
-            
         else:
             print(f" Error: Comando '!{comando}' no reconocido.")
             return f" Error: Comando '!{comando}' no reconocido."
