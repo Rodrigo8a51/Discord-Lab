@@ -10,8 +10,8 @@ def mostrar_bienvenida():
     return (
         "📜 Bot de Gestión de Tareas (Modo Estructurado):\n"
         "📜 Primeros pasos Agente Discord UX:\n"
-        "📜 Escriba !hora para ver la hora actual:\n"
         "📜 Escriba !inicio para ver la lista de comandos:\n"
+        "📜 Escriba !hora para ver la hora actual:\n"
         "📜 Escriba !buscar <termino> para buscar en el diccionario:\n"
         "📜 Escriba !validar <nombre> para validar un nombre de variable:\n"
         "📜 Escriba !ayuda para ver la lista de comandos:\n"
