@@ -6,6 +6,7 @@ import datetime
 from practica02.gestor_comando import buscar_en_diccionario, validar_variable
 from practica03.agente_logica import ejecutar_multiplicacion, ejecutar_suma, buscar_en_diccionario, obtener_fecha_completa
 from practica01.procesador_comandos import obtener_saludo, procesar_comando_recordar, calcular_uptime
+from practica04.tareas_agente import agregar_tarea, listar_tareas, eliminar_tarea
 
 def mostrar_bienvenida():
     """Retorna la lista de comandos disponibles."""
@@ -22,6 +23,9 @@ def mostrar_bienvenida():
         "📜 Escriba !fecha para ver la fecha actual:\n"
         "📜 Escriba !saludo para recibir un saludo:\n"
         "📜 Escriba !recordar <tarea> para agregar una tarea:\n"
+        "📜 Escriba !add <tarea> para agregar una tarea:\n"
+        "📜 Escriba !list para mostrar la lista de tareas:\n"
+        "📜 Escriba !del <tarea> para eliminar una tarea:\n"
         "📜 Escriba !uptime para ver el tiempo de actividad:\n"
         "📜 Escriba !Exit para salir del Agente:"
 
@@ -75,6 +79,15 @@ def main(entrada):
         elif comando == "recordar":
             return procesar_comando_recordar(argumento)
         
+        elif comando == "add":
+            return agregar_tarea(argumento)
+        
+        elif comando == "list":
+            return listar_tareas(argumento)
+        
+        elif comando == "del":
+            return eliminar_tarea(argumento)
+        
         elif comando == "uptime":
             hora_inicio = datetime.datetime.now()  # Para demo, se reinicia cada vez
             return calcular_uptime(hora_inicio)
@@ -91,7 +104,10 @@ def main(entrada):
                 "7. '!fecha' - Muestra la fecha actual\n"
                 "8. '!saludo' - Recibe un saludo\n"
                 "9. '!recordar <tarea>' - Agrega una tarea a la lista de recordatorios\n"
-                "10. '!uptime' - Muestra el tiempo de actividad del bot\n"
+                "10. '!add <tarea>' - Agrega una tarea a la lista de recordatorios\n"
+                "11. '!list' - Muestra la lista de recordatorios\n"
+                "12. '!del <tarea>' - Elimina una tarea de la lista de recordatorios\n"
+                "13. '!uptime' - Muestra el tiempo de actividad del bot\n"
             )
         
         else:
