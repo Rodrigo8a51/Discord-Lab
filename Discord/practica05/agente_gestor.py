@@ -4,6 +4,7 @@ import re
 from dotenv import load_dotenv
 import datetime
 from practica02.gestor_comando import buscar_en_diccionario, validar_variable
+from practica03.agente_logica import ejecutar_multiplicacion, ejecutar_suma, buscar_en_diccionario, obtener_fecha_completa
 
 def mostrar_bienvenida():
     """Retorna la lista de comandos disponibles."""
@@ -14,7 +15,10 @@ def mostrar_bienvenida():
         "📜 Escriba !hora para ver la hora actual:\n"
         "📜 Escriba !buscar <termino> para buscar en el diccionario:\n"
         "📜 Escriba !validar <nombre> para validar un nombre de variable:\n"
+        "📜 Escriba !suma <num1> <num2> para sumar dos números:\n"
+        "📜 Escriba !multiplicacion <num1> <num2> para multiplicar dos números:\n"
         "📜 Escriba !ayuda para ver la lista de comandos:\n"
+        "📜 Escriba !fecha para ver la fecha actual:\n"
         "📜 Escriba !Exit para salir del Agente:"
 
     )
@@ -37,21 +41,30 @@ def main(entrada):
         if comando == "exit":
             print("Saliendo del gestor...")
             return "Saliendo del gestor..."
-
-        elif comando == "hora":
-            ahora = datetime.datetime.now().strftime("%H:%M:%S")
-            return f" Hora actual: {ahora}"
-
+        
         elif comando == "inicio":
             print(mostrar_bienvenida())
             return mostrar_bienvenida()
         
+        elif comando == "hora":
+            ahora = datetime.datetime.now().strftime("%H:%M:%S")
+            return f" Hora actual: {ahora}"
+
         elif comando == "buscar":
             return buscar_en_diccionario(argumento)
         
         elif comando == "validar":
             return validar_variable(argumento) 
         
+        elif comando == "suma":
+            return ejecutar_suma(argumento)
+        
+        elif comando == "multiplicacion":
+            return ejecutar_multiplicacion(argumento)
+        
+        elif comando == "fecha":
+            return obtener_fecha_completa()
+
         elif comando == "ayuda":
             return (
                 "Comandos disponibles:\n"
@@ -59,6 +72,9 @@ def main(entrada):
                 "2. '!validar <nombre>' - Revisa si un nombre de variable es correcto\n"
                 "3. '!hora' - Muestra la hora del sistema\n"
                 "4. '!inicio' - Muestra esta lista de comandos\n"
+                "5. '!suma <num1> <num2>' - Realiza una suma\n"
+                "6. '!multiplicacion <num1> <num2>' - Realiza una multiplicación\n"
+                "7. '!fecha' - Muestra la fecha actual\n"
             )
         
         else:
